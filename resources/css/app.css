@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.jsx';
+
+@theme {
+    --font-sans: 'Quicksand', 'Nunito', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Nunito', 'Quicksand', sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Custom romantic glow & glassmorphism utilities */
+.glass-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 50px rgba(244, 63, 94, 0.15), 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-soft {
+    box-shadow: 0 14px 34px -4px rgba(244, 63, 94, 0.14), 0 8px 18px -6px rgba(0, 0, 0, 0.04);
+}
+
+.glass-card-dark {
+    background: rgba(30, 20, 35, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 60px rgba(225, 29, 72, 0.25);
+}
+
+@keyframes floatBubble {
+    0% {
+        transform: translateY(105vh) scale(0.8) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-15vh) scale(1.1) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    animation: floatBubble linear infinite;
+    z-index: 0;
+}
+
