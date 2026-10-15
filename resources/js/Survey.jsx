@@ -19,10 +19,6 @@ import {
 import { sounds } from './utils/soundEffects';
 import MusicPlayer from './components/MusicPlayer';
 
-// ============================================================================
-// KONFIGURASI NOMOR WHATSAPP (Ubah nomor di bawah ini dengan format: 628...)
-// ============================================================================
-const WA_PHONE_NUMBER = "+62895391643059"; // <-- Ganti dengan nomor WhatsApp kamu!
 
 const MONTH_NAMES = [
     'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -134,11 +130,10 @@ export default function Survey() {
         }
     };
 
-    // Fungsi kirim hasil ke WhatsApp
+    // Fungsi kirim hasil ke WhatsApp (Membuka WhatsApp dan memilih kontak sendiri)
     const handleRedirectWhatsApp = () => {
-        const cleanPhone = WA_PHONE_NUMBER.replace(/[^0-9]/g, '');
         const textMessage = `Halo! Aku udah isi surveinya. Aku mau diajak jalan buat ${answers.dateActivity || 'jalan seru'} di hari ${answers.dateDay || 'weekend'}! Kapan nih?`;
-        const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(textMessage)}`;
+        const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(textMessage)}`;
         window.open(waUrl, '_blank');
     };
 

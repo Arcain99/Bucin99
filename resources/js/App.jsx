@@ -15,10 +15,6 @@ import {
 import { sounds } from './utils/soundEffects';
 import MusicPlayer from './components/MusicPlayer';
 
-// ============================================================================
-// KONFIGURASI NOMOR WHATSAPP (Ganti dengan nomor WhatsApp kamu, format: 628...)
-// ============================================================================
-const WA_PHONE_NUMBER = "+62895391643059";
 
 const MONTH_NAMES = [
     'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -128,7 +124,7 @@ export default function App() {
         }
     };
 
-    // Logika Redirect WhatsApp pada Step 6
+    // Logika Redirect WhatsApp pada Step 6 (Membuka WhatsApp dan memilih kontak sendiri)
     const handleRedirectWhatsApp = () => {
         // Format teks sesuai spesifikasi prompt:
         // Halo! Aku udah isi surveinya. Aku pilih [Jawaban_Step2] dan [Jawaban_Step3]. Ayo jalan hari [Jawaban_Step5]! ✨
@@ -136,9 +132,8 @@ export default function App() {
         const step3 = answers.loveLanguage || 'disuapin makanan manis';
         const step5 = answers.schedule || 'weekend ini';
 
-        const cleanPhone = WA_PHONE_NUMBER.replace(/[^0-9]/g, '');
         const message = `Halo! Aku udah isi surveinya. Aku pilih ${step2} dan ${step3}. Ayo jalan hari ${step5}! ✨`;
-        const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+        const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
         window.open(waUrl, '_blank');
     };
 
